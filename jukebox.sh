@@ -13,7 +13,7 @@ while read -ep "Tap: " INPUT; do
 		continue
 	fi
 	
-	print $INPUT
+	echo $INPUT
 
 	# Trim leading zeros so it doesn't think this is octal or whatever
 	INPUT=$( echo $INPUT | sed 's/^0*//' )
