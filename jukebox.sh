@@ -15,7 +15,7 @@ while read -ep "Tap: " INPUT; do
 	
 	echo $INPUT
 	
-	INPUT=$( echo $INPUT | awk '{sub(/^0*/,"");}1 )
+	INPUT=$( echo $INPUT | awk '{sub(/^0*/,"");}1' )
 	
 	echo $INPUT
 
