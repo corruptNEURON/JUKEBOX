@@ -2,12 +2,12 @@
 
 # Update songs list
 echo "Updating song list"
-curl -s -S https://raw.githubusercontent.com/helen/swipe-jukebox/master/songs.txt > songs.txt
+curl -s -S https://raw.githubusercontent.com/corruptNEURON/JUKEBOX/main/songs.csv > songs.csv
 
 echo "Jukebox started!"
 
-while read -ep "Swipe: " INPUT; do
-	# Swipe input contains track delimiters, let's extract just the first number and use it
+while read -ep "Tap: " INPUT; do
+	# Tap input contains track delimiters, let's extract just the first number and use it
 	read -a ID <<< "${INPUT//[^0-9]/ }"
 
 	# No number found, bail
