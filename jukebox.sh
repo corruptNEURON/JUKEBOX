@@ -8,25 +8,25 @@ echo "Jukebox started!"
 
 while read -ep "Tap: " INPUT; do
 
-	ID=${echo INPUT}
+	# ID=${echo INPUT}
 
 	# No number found, bail
-	if [[ -z "$ID" ]]; then
+	if [[ -z "$INPUT" ]]; then
 		continue
 	fi
 
 	# Trim leading zeros so it doesn't think this is octal or whatever
-	ID=$( echo $ID | sed 's/^0*//' )
+	INPUT=$( echo $INPUT | sed 's/^0*//' )
 
 	# Special case for a toggle card - I hope there are never 1000 plastic cards floating around my house
-	if [[ "$ID" -eq "2012737" ]]; then
+	if [[ "$INPUT" -eq "2012737" ]]; then
 		mpc toggle
 		continue
 	fi
 
 	# Grab the appropriate line from the song list
-	URI=$( sed "${ID}q;d" songs.csv )
-	# URI=$( awk -F',' '{ if ($1=="${ID}") { print $2 } }' songs.csv)
+	# URI=$( sed "${INPUT}q;d" songs.csv )
+	URI=$( awk -F',' '{ if ($1=="${INPUT}") { print $2 } }' songs.csv)
 	
 	
 	if [[ -z "$URI" ]]; then
