@@ -19,7 +19,7 @@ while read -ep "Tap: " INPUT; do
 	
 	echo $INPUT
 
-	# Special case for a toggle card - I hope there are never 1000 plastic cards floating around my house
+	# Special case for a toggle card
 	if [[ "$INPUT" -eq "2012737" ]]; then
 		mpc toggle
 		continue
