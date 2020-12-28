@@ -16,13 +16,13 @@ while read -ep "Tap: " INPUT; do
 	echo $INPUT
 
 	# Special case for a toggle card - I hope there are never 1000 plastic cards floating around my house
-	if [[ "$INPUT" -eq "2012737" ]]; then
+	if [[ "$INPUT" -eq "0002012737" ]]; then
 		mpc toggle
 		continue
 	fi
 
 	# Grab the appropriate line from the song list
-	URI=$( awk -F',' '{ if ($1=="${INPUT}") { print $2 } }' songs.csv)
+	URI=$( awk -F',' '{ if ($1=="$INPUT") { print $2 } }' songs.csv)
 	
 	echo $URI
 	
