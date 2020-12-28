@@ -8,8 +8,6 @@ echo "Jukebox started!"
 
 while read -ep "Tap: " INPUT; do
 
-	# ID=${echo INPUT}
-
 	# No number found, bail
 	if [[ -z "$INPUT" ]]; then
 		continue
@@ -25,7 +23,6 @@ while read -ep "Tap: " INPUT; do
 	fi
 
 	# Grab the appropriate line from the song list
-	# URI=$( sed "${INPUT}q;d" songs.csv )
 	URI=$( awk -F',' '{ if ($1=="${INPUT}") { print $2 } }' songs.csv)
 	
 	
