@@ -26,7 +26,8 @@ while read -ep "Tap: " INPUT; do
 
 	# Grab the appropriate line from the song list
 	# URI=$( sed "${ID}q;d" songs.csv )
-	URI=$(awk -F',' '{if ($1=="${ID}") {print $2}}' songs.csv)
+	URI=$(awk -F',' '{if [[$1=="${ID}"]]; then {print $2}}' songs.csv)
+	
 
 	if [[ -z "$URI" ]]; then
 		continue
