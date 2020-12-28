@@ -8,7 +8,7 @@ echo "Jukebox started!"
 
 while read -ep "Tap: " INPUT; do
 
-	ID="${INPUT}"
+	ID=${INPUT}
 
 	# No number found, bail
 	if [[ -z "$ID" ]]; then
