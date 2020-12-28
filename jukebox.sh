@@ -7,8 +7,8 @@ curl -s -S https://raw.githubusercontent.com/corruptNEURON/JUKEBOX/main/songs.cs
 echo "Jukebox started!"
 
 while read -ep "Tap: " INPUT; do
-	# Tap input contains track delimiters, let's extract just the first number and use it
-	read -a ID <<< "${INPUT//[^0-9]/ }"
+
+	ID="${INPUT}"
 
 	# No number found, bail
 	if [[ -z "$ID" ]]; then
@@ -19,13 +19,14 @@ while read -ep "Tap: " INPUT; do
 	ID=$( echo $ID | sed 's/^0*//' )
 
 	# Special case for a toggle card - I hope there are never 1000 plastic cards floating around my house
-	if [[ "$ID" -eq "999" ]]; then
+	if [[ "$ID" -eq "2012737" ]]; then
 		mpc toggle
 		continue
 	fi
 
 	# Grab the appropriate line from the song list
-	URI=$( sed "${ID}q;d" songs.txt )
+	# URI=$( sed "${ID}q;d" songs.csv )
+	URI=$(awk -F',' '{if ($1=="${ID}") {print $2}}' songs.csv)
 
 	if [[ -z "$URI" ]]; then
 		continue
