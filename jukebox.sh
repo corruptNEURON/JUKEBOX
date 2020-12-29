@@ -2,7 +2,7 @@
 
 # Update songs list
 echo "Updating song list"
-curl -s -S https://raw.githubusercontent.com/corruptNEURON/JUKEBOX/main/songs.csv > songs.csv
+curl -s -S https://raw.githubusercontent.com/corruptNEURON/JUKEBOX/main/songs.txt > songs.txt
 
 echo "Jukebox started!"
 
@@ -26,7 +26,7 @@ while read -ep "Tap: " INPUT; do
 	fi
 	
 	# Grab the appropriate line from the song list
-	URI=$(awk '{if ($2 == $INPUT); print $1}' songs.csv)
+	URI=$(awk '{if ($2 == $INPUT); print $1}' songs.txt)
 	
 	echo $URI
 	
