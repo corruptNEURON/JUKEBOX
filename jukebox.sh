@@ -26,8 +26,8 @@ while read -ep "Tap: " INPUT; do
 	fi
 	
 	# Grab the appropriate line from the song list
-	SONG=$(awk '{if ($1 == $INPUT); print $2/n}' songs.txt)
-	
+	SONG=$(awk '{if ($1 == $INPUT) {print $2}}' songs.txt)
+
 	echo $SONG
 	
 	mpc stop -q && mpc clear -q && mpc add $URI && mpc play
