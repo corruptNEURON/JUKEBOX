@@ -26,7 +26,7 @@ while read -ep "Tap: " INPUT; do
 	fi
 	
 	# Grab the appropriate line from the song list
-	URI=$(awk '{if ($2 == $INPUT); print $1}' songs.txt)
+	URI=$(awk '{if ($1 == $INPUT); print $2}' songs.txt)
 	
 	echo $URI
 	
