@@ -24,7 +24,7 @@ while read -ep "Tap: " INPUT; do
 		mpc toggle
 		continue
 	fi
-
+ 
 	print awk -F ',' 'print $1' songs.csv
 	# Grab the appropriate line from the song list
 	URI=$(( awk -F ',' '{ if [["$1" == "$INPUT"]]; then print $2}' songs.csv ))
