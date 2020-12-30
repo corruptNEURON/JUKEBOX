@@ -22,12 +22,12 @@ while read -ep "Tap: " INPUT; do
 	fi
 	
 	# Special cases for volume up and down
-	if [[ $INPUT - eq "4488121" ]]; then
+	if [[ $INPUT -eq "4488121" ]]; then
 		mpc volume +15
 		continue
 	fi
 	
-	if [[ $INPUT - eq "4488126" ]]; then
+	if [[ $INPUT -eq "4488126" ]]; then
 		mpc volume -15
 		continue
 	fi
