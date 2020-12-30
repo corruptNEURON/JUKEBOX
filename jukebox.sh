@@ -21,6 +21,17 @@ while read -ep "Tap: " INPUT; do
 		continue
 	fi
 	
+	# Special cases for volume up and down
+	if [[ $INPUT - eq "4488121" ]]; then
+		mpc volume +15
+		continue
+	fi
+	
+	if [[ $INPUT - eq "4488126" ]]; then
+		mpc volume -15
+		continue
+	fi
+	
 	# Grab the appropriate line from the song list
 	SONG=$(awk -v input="$INPUT" '{if ($1 == input) {print $2}}' songs.txt)
 	
