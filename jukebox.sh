@@ -12,12 +12,8 @@ while read -ep "Tap: " INPUT; do
 	if [[ -z "$INPUT" ]]; then
 		continue
 	fi
-	
-	echo $INPUT
-	
+
 	INPUT=$( echo $INPUT | awk '{sub(/^0*/,"");}1' )
-	
-	echo $INPUT
 
 	# Special case for a toggle card
 	if [[ $INPUT -eq "2012737" ]]; then
@@ -27,8 +23,6 @@ while read -ep "Tap: " INPUT; do
 	
 	# Grab the appropriate line from the song list
 	SONG=$(awk -v input="$INPUT" '{if ($1 == input) {print $2}}' songs.txt)
-
-	echo $SONG
 	
-	mpc stop -q && mpc clear -q && mpc add $URI && mpc play
+	mpc stop -q && mpc clear -q && mpc add $SONG && mpc play
 done
