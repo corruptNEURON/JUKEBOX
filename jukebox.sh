@@ -26,7 +26,7 @@ while read -ep "Tap: " INPUT; do
 	fi
 	
 	# Grab the appropriate line from the song list
-	SONG=$(awk '{if ($1 == $INPUT) {print $2}}' songs.txt)
+	SONG=$(awk -v input="$INPUT" '{if ($1 == input) {print $2}}' songs.txt)
 
 	echo $SONG
 	
