@@ -32,6 +32,11 @@ while read -ep "Tap: " INPUT; do
 		continue
 	fi
 	
+	if [[ $INPUT -eq "11722165" ]]; then
+		mpc stop -q $$ mpc clear -q && mpc add spotify:album:57ISBWUZKtB3s5se3rhg5S && mpc add spotify:album:4RU9d3qLVIn1ijkorkaAUF && mpc add spotify:album:004XUoyrxdCfkDQJBfYRNF && mpc random && mpc play
+		continue
+	fi
+	
 	# Grab the appropriate line from the song list
 	SONG=$(awk -v input="$INPUT" '{if ($1 == input) {print $2}}' songs.txt)
 	
