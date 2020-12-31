@@ -41,4 +41,4 @@ while read -ep "Tap: " INPUT; do
 	SONG=$(awk -v input="$INPUT" '{if ($1 == input) {print $2}}' songs.txt)
 	
 	mpc stop -q && mpc clear -q && mpc add $SONG && mpc play
-done
+done 
